@@ -52,11 +52,13 @@ namespace WebFlashEstetica.View.Web.Agendamento
         {
             btnReagendar.Visible = false;
             btnCancelar.Visible = false;
+            btnFinalizar.Visible = false;
         }
         private void DesbloquearButoes()
         {
             btnReagendar.Visible = true;
             btnCancelar.Visible = true;
+            btnFinalizar.Visible = true;
         }
 
         private void BloquearCampos()
@@ -230,6 +232,17 @@ namespace WebFlashEstetica.View.Web.Agendamento
 
         protected void btnFinalizar_Click(object sender, EventArgs e)
         {
+            AtualizarFinalizado();
+            ClientScript.RegisterStartupScript(this.GetType(), "Mensagem", "<script>mensagemUPDFin();</script>");
+            BloquerBotoesReagendarCancelar();
+        }
+
+        private void AtualizarFinalizado()
+        {
+            Agendamento_Estetica p = new Agendamento_Estetica();
+            p.Id = Convert.ToInt32(txtId.Text);
+
+            aService.UpdateFina(p);
 
         }
     }

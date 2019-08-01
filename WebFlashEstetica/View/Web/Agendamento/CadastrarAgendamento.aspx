@@ -32,6 +32,11 @@
             window.alert("Agendamento cancelado com sucesso!")
         }
 
+        function mensagemUPDFin() {
+            window.alert("Agendamento finalizado com sucesso!")
+            //window.location = 'ListarAgendamento.aspx';
+        }
+
 
     </script>
 </head>

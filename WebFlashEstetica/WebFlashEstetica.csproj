@@ -262,8 +262,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\Hugo+27072019\source\repos\FlashEstetica\Library\Library.csproj">
-      <Project>{2a57ad55-4a10-4899-9d93-91043c801ec4}</Project>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{020a4769-4257-491a-96b1-3a1afbb932ff}</Project>
       <Name>Library</Name>
     </ProjectReference>
   </ItemGroup>
