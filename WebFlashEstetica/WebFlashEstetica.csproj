@@ -127,6 +127,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="WebAcessoLogin.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -243,6 +244,13 @@
     </Compile>
     <Compile Include="View\Web\Cliente\ListarCliente.aspx.designer.cs">
       <DependentUpon>ListarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebAcessoLogin.aspx.cs">
+      <DependentUpon>WebAcessoLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebAcessoLogin.aspx.designer.cs">
+      <DependentUpon>WebAcessoLogin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
