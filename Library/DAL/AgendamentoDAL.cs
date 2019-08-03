@@ -73,7 +73,7 @@ namespace Library.DAL
 
             //Consulta tebale de agendamento usando select
             StringBuilder query = new StringBuilder();
-            query.AppendLine("SELECT ID_AGEN, CLIENTE_AGEN, DATA_AGEN, HORA_AGEN FROM TB_AGENDAMENTO WHERE DATA_AGEN > GETDATE() AND AGEN_SITUACAO = 'A' ORDER BY  DATA_AGEN ASC");
+            query.AppendLine("SELECT ID_AGEN, CLIENTE_AGEN, DATA_AGEN, HORA_AGEN, AGEN_SITUACAO FROM TB_AGENDAMENTO ORDER BY  DATA_AGEN ASC");
 
             //Abrir conexão com o banco de dados
             cf = new ConnectionFactory();
@@ -95,6 +95,7 @@ namespace Library.DAL
                 p.NomeCliente = reader["CLIENTE_AGEN"].ToString();
                 p.Data = Convert.ToDateTime(reader["DATA_AGEN"]);
                 p.Hora = Convert.ToDateTime(reader["HORA_AGEN"]);
+                p.Status = reader["AGEN_SITUACAO"].ToString();
                
                 listaAgendamento.Add(p);//Adicionando o objeto para a lista
             }

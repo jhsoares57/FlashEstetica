@@ -23,7 +23,7 @@ namespace WebFlashEstetica.View.Web.Agendamento
         }
         protected void btnExcluir_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         public void CerregarAgen()
@@ -38,19 +38,30 @@ namespace WebFlashEstetica.View.Web.Agendamento
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 //Panel pnlAlterar = (Panel)e.Row.FindControl("pnlAlterar");
-                Panel pnlAdicionarPacote = (Panel)e.Row.FindControl("pnlAdicionarPacote");
-                Panel pnlAdicionarSecao = (Panel)e.Row.FindControl("pnlAdicionarSecao");
-
-
-            }
-
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                if (e.Row.RowState == DataControlRowState.Alternate)
+                Panel pnlAgendar = (Panel)e.Row.FindControl("pnlAgendar");
+                //Panel pnlAdicionarSecao = (Panel)e.Row.FindControl("pnlAdicionarSecao");
+                if (e.Row.Cells[4].Text == "F")
                 {
-                    e.Row.Style.Add("background-color", "#3AC0F2");
+                    pnlAgendar.Visible = false;
                 }
+                if (e.Row.Cells[4].Text == "R")
+                {
+                    pnlAgendar.Visible = false;
+                }
+                if (e.Row.Cells[4].Text == "C")
+                {
+                    pnlAgendar.Visible = false;
+                }
+
             }
+
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    if (e.Row.RowState == DataControlRowState.Alternate)
+            //    {
+            //        e.Row.Style.Add("background-color", "#3AC0F2");
+            //    }
+            //}
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
@@ -60,6 +71,25 @@ namespace WebFlashEstetica.View.Web.Agendamento
                 e.Row.Cells[3].HorizontalAlign = HorizontalAlign.Center;
                 e.Row.Cells[4].HorizontalAlign = HorizontalAlign.Center;
             }
+
+            //colorindo uma linha com base no status do agendamento
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                switch (e.Row.Cells[4].Text)
+                {
+                    //Se o a genda
+                    case "F":
+                        e.Row.BackColor = System.Drawing.Color.Lime;
+                        break;
+                    case "R":
+                        e.Row.BackColor = System.Drawing.Color.DarkGray;
+                        break;
+                    case "C":
+                        e.Row.BackColor = System.Drawing.Color.Tomato;
+                        break;
+                }
+            }
+
         }
 
         protected void gvListarAgendamento_SelectedIndexChanged(object sender, EventArgs e)

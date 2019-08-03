@@ -76,6 +76,7 @@
                                         <asp:BoundField HeaderText="Nome do Cliente:" DataField="NomeCliente" />
                                         <asp:BoundField HeaderText="Data do agendamento" DataField="Data" DataFormatString="{0: dd/MM/yyyy}"/>
                                         <asp:BoundField HeaderText="Hora do agendamento" DataField="Hora" DataFormatString="{0:t}"/>
+                                        <asp:BoundField HeaderText="Situação:" DataField="Status" />
 
                                        <%-- <asp:TemplateField>
                                             <ItemTemplate>
@@ -89,10 +90,12 @@
                                         </asp:TemplateField>--%>
                                         <asp:TemplateField>
                                             <ItemTemplate>
+                                                <asp:Panel ID="pnlAgendar" runat="server">
                                                  <button class="btn btn-success btn-sm" title="Editar Agendamento" style="height: 30px"
                                                         type="button" onclick='EditarAgendamento(<%# Eval("Id") %>); return false;'>
                                                         <i class="glyphicon glyphicon-copy"></i>
                                                     </button>
+                                                    </asp:Panel>
                                                 </ItemTemplate>
                                                 </asp:TemplateField>
 
