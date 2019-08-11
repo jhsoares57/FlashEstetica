@@ -39,7 +39,25 @@ namespace Library.Business
             return dDAL.FindByIdPessoa(id);
         }
 
-       
+        public bool Update(Cliente_Estetica P)
+        {
+            bool atualizou = false;
+            ClienteDAL pDAL = new ClienteDAL();
+
+            //if (P.Id == 0)
+            //{
+            //    throw new Exception("Selecione uma pessoa para atualizar.");
+            //}
+
+            if (pDAL.Update(P) > 0)
+            {
+                //Este IF verificará se o retorno do método será maior que 0,
+                //ou seja, se a atualização foi feita pela classe que acessa o Banco
+                //se sim vai mudar para TRUE a variável e retornar para quem chamou este método.
+                atualizou = true;
+            }
+            return atualizou;
+        }
 
     }
 }

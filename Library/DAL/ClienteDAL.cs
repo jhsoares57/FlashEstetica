@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Library.DAL
 {
-     public class ClienteDAL
+    public class ClienteDAL
     {
         ConnectionFactory cf;
 
         public void Insert(Cliente_Estetica c)
         {
             string query = "FL_CLIENTE_INS";
-            
+
             //Connection Factory: Classe que gerencia o local da conexão, tendo o método responsável por obter a conexão
             cf = new ConnectionFactory();
 
@@ -160,7 +160,7 @@ namespace Library.DAL
             {
                 c.Id = Convert.ToInt32(reader["ID_CLINTE"]);
                 c.Nome = reader["NM_CLIENTE"].ToString();
-                
+
             }
             cf.Conexao.Close();
             return c; //Retorna o objeto do tipo Pessoa
@@ -248,112 +248,84 @@ namespace Library.DAL
         }
 
 
-        //public Cliente FindByPessoaId(int id)
-        //{
-        //    string query = "FL_OBTER_CLIENTE";
+        //FAZER ATUALIZAÇÃO DA PALESTRA
+        public int Update(Cliente_Estetica c)
+        {
+            cf = new ConnectionFactory();
+            string query = "FL_CLIENTE_UPD";
 
-        //    cf = new ConnectionFactory();
+            //Variável guardará a quantidade de linhas afetadas
+            int linhasAfetadas = 0;
 
+            //PARAMETROS 
+            cf.Comando = cf.Conexao.CreateCommand();
+            cf.Comando.Parameters.AddWithValue("@NM_CLIENTE",c.Nome);
+            cf.Comando.Parameters.AddWithValue("@CPF", c.Cpf);
+            cf.Comando.Parameters.AddWithValue("@CELULAR",   c.Celular);
+            cf.Comando.Parameters.AddWithValue("@EMAIL", c.Email);
+            cf.Comando.Parameters.AddWithValue("@CEP", c.Cep);
+            cf.Comando.Parameters.AddWithValue("@ENDERECO", c.Endereco);
+            cf.Comando.Parameters.AddWithValue("@BAIRRO", c.Bairro);
+            cf.Comando.Parameters.AddWithValue("@NUMERO", c.Numero);
+            cf.Comando.Parameters.AddWithValue("@CIDADE	,", c.Cidade);
+            cf.Comando.Parameters.AddWithValue("@UF", c.Uf);
+            cf.Comando.Parameters.AddWithValue("@NASCIMENTO", c.Nascimento);
+            cf.Comando.Parameters.AddWithValue("@IDADE", c.Idade);
+            cf.Comando.Parameters.AddWithValue("@SEXO", c.Sexo);
+            cf.Comando.Parameters.AddWithValue("@ESTCIVIL", c.EstadoCivil);
+            cf.Comando.Parameters.AddWithValue("@PROFISSAO", c.Profissao);
+            cf.Comando.Parameters.AddWithValue("@MOTIVO", c.Motivo);
+            cf.Comando.Parameters.AddWithValue("@ESTETICO", c.Estetico);
+            cf.Comando.Parameters.AddWithValue("@QUALESTETICO", c.QualEsteico);
+            cf.Comando.Parameters.AddWithValue("@ONCOLOGICO", c.Oncologico);
+            cf.Comando.Parameters.AddWithValue("@QUALONCOLOGICO", c.QualocnOclogico);
+            cf.Comando.Parameters.AddWithValue("@CIRURGICO", c.Cirurgico);
+            cf.Comando.Parameters.AddWithValue("@QUALCIRURGICO", c.QualCirurgico);
+            cf.Comando.Parameters.AddWithValue("@ACIDO", c.Acido);
+            cf.Comando.Parameters.AddWithValue("@QUALACIDO", c.QualAcido);
+            cf.Comando.Parameters.AddWithValue("@INTESTINO", c.Intestino);
+            cf.Comando.Parameters.AddWithValue("@OBSINTESTINO", c.ObsIntestino);
+            cf.Comando.Parameters.AddWithValue("@LESOES", c.Lesoes);
+            cf.Comando.Parameters.AddWithValue("@QUAISLESOES", c.QuaisLesoes);
+            cf.Comando.Parameters.AddWithValue("@TRATMEDICO", c.TratMedico);
+            cf.Comando.Parameters.AddWithValue("@QUALTRATMEDICO", c.QualTratMedico);
+            cf.Comando.Parameters.AddWithValue("@LIQUIDOS", c.Liquidos);
+            cf.Comando.Parameters.AddWithValue("@QUAISLIQUIDOS", c.QuaisLiquidos);
+            cf.Comando.Parameters.AddWithValue("@VARIZES", c.Varizes);
+            cf.Comando.Parameters.AddWithValue("@GRAUVARIZES", c.GrauVarizes);
+            cf.Comando.Parameters.AddWithValue("@ATIVFISICA	", c.AtivFisica);
+            cf.Comando.Parameters.AddWithValue("@QUALATIVFISICA", c.QualAtivFisica);
+            cf.Comando.Parameters.AddWithValue("@ANTICONCEPCIONAL", c.Anticoncepcional);
+            cf.Comando.Parameters.AddWithValue("@QUALANTICONCEPCIONAL", c.QualAnticoncepcional);
+            cf.Comando.Parameters.AddWithValue("@ORTOPEDICO", c.Ortopedico);
+            cf.Comando.Parameters.AddWithValue("@QUALORTOPEDICO", c.QualOrtopedico);
+            cf.Comando.Parameters.AddWithValue("@ALIBALANCEADA", c.AliBalanceada);
+            cf.Comando.Parameters.AddWithValue("@QUALALIBALANCEADA", c.QualAliBalanceada);
+            cf.Comando.Parameters.AddWithValue("@ALERGIA", c.Alergia);
+            cf.Comando.Parameters.AddWithValue("@QUALALERGIA", c.QualAlergia);
+            cf.Comando.Parameters.AddWithValue("@MARCAPASSO", c.Marcapasso);
+            cf.Comando.Parameters.AddWithValue("@QUALMARCAPASSO", c.QualMarcapasso);
+            cf.Comando.Parameters.AddWithValue("@CUIDADODIARIO", c.CuidadoDaiario);
+            cf.Comando.Parameters.AddWithValue("@QUALPRODUTO", c.QualProduto);
+            cf.Comando.Parameters.AddWithValue("@FILHO", c.Filho);
+            cf.Comando.Parameters.AddWithValue("@QUANTOSFILHOS", c.QuantosFilos);
+            cf.Comando.Parameters.AddWithValue("@SENTADA", c.Sentada);
+            cf.Comando.Parameters.AddWithValue("@FUMANTE", c.Fumante);
+            cf.Comando.Parameters.AddWithValue("@HIPOTENSAO", c.Hipotensao);
+            cf.Comando.Parameters.AddWithValue("@HIPERTENSAO", c.Hipertensao);
+            cf.Comando.Parameters.AddWithValue("@DIABETES", c.Diabetes);
+            cf.Comando.Parameters.AddWithValue("@ID_CLIENTE",c.Id);//Necessário ID para saber que registro será atualizado
 
-        //    cf.Comando = cf.Conexao.CreateCommand();
-        //    cf.Comando.Parameters.AddWithValue("@ID_CLINTE", id);
-        //    cf.Comando.CommandType = CommandType.StoredProcedure;
-        //    cf.Comando.CommandText = query.ToString();
+            cf.Comando.CommandType = CommandType.StoredProcedure;
+            cf.Comando.CommandText = query;
+            cf.Conexao.Open();
+            //ExecuteNonQuery: Retorna o número de linhas afetadas no Banco de dados para a variável.
+            linhasAfetadas = cf.Comando.ExecuteNonQuery();
+            cf.Conexao.Close();
 
-        //    //Cria uma lista, que armazenárá os resultados da consulta  
-        //    List<Cliente> listaCliente1 = new List<Cliente>();
+            //Este método retorna um número inteiro, conforme o que a assinatura pede.
+            return linhasAfetadas;
+        }
 
-        //    cf.Conexao.Open();//Abre a conexão
-        //    SqlDataReader reader = cf.Comando.ExecuteReader();//Executando o comando
-
-        //    while (reader.Read())
-        //    {
-        //        Cliente c = new Cliente();//Instanciando o objeto da iteração
-        //        //Preenchimento das propriedades a partir do que retornou no banco.
-        //        c.Id = Convert.ToInt32(reader["ID_CLINTE"]);
-        //        c.Nome = reader["NM_CLIENTE"].ToString();
-        //        c.Cpf = reader["CPF"].ToString();
-        //        c.Celular = reader["CELULAR"].ToString();
-        //        c.Email = reader["EMAIL"].ToString();
-        //        c.Cep = reader["CEP"].ToString();
-        //        c.Endereco = reader["ENDERECO"].ToString();
-        //        c.Bairro = reader["BAIRRO"].ToString();
-        //        c.Numero = Convert.ToInt32(reader["NUMERO"]);
-        //        c.Cidade = reader["CIDADE"].ToString();
-        //        c.Uf = reader["UF"].ToString();
-        //        c.Nascimento = reader["NASCIMENTO"].ToString();
-        //        c.Idade = Convert.ToInt32(reader["IDADE"]);
-        //        c.Sexo = reader["SEXO"].ToString();
-        //        c.EstadoCivil = reader["ESTCIVIL"].ToString();
-        //        c.Profissao = reader["PROFISSAO"].ToString();
-        //        c.Estetico = reader["ESTETICO"].ToString();
-        //        c.QualEsteico = reader["QUALESTETICO"].ToString();
-        //        c.Oncologico = reader["ONCOLOGICO"].ToString();
-        //        c.QualocnOclogico = reader["QUALONCOLOGICO"].ToString();
-        //        c.Cirurgico = reader["CIRURGICO"].ToString();
-        //        c.QualCirurgico = reader["QUALCIRURGICO"].ToString();
-        //        c.Acido = reader["ACIDO"].ToString();
-        //        c.QualAcido = reader["QUALACIDO"].ToString();
-        //        c.Intestino = reader["INTESTINO"].ToString();
-        //        c.ObsIntestino = reader["OBSINTESTINO"].ToString();
-        //        c.Lesoes = reader["LESOES"].ToString();
-        //        c.QuaisLesoes = reader["QUAISLESOES"].ToString();
-        //        c.TratMedico = reader["TRATMEDICO"].ToString();
-        //        c.QualTratMedico = reader["QUALTRATMEDICO"].ToString();
-        //        c.Liquidos = reader["LIQUIDOS"].ToString();
-        //        c.QuaisLiquidos = reader["QUAISLIQUIDOS"].ToString();
-        //        c.Varizes = reader["VARIZES"].ToString();
-        //        c.GrauVarizes = reader["GRAUVARIZES"].ToString();
-        //        c.AtivFisica = reader["ATIVFISICA"].ToString();
-        //        c.QualAtivFisica = reader["QUALATIVFISICA"].ToString();
-        //        c.Anticoncepcional = reader["ANTICONCEPCIONAL"].ToString();
-        //        c.QualAnticoncepcional = reader["QUALANTICONCEPCIONAL"].ToString();
-        //        c.Ortopedico = reader["ORTOPEDICO"].ToString();
-        //        c.QualOrtopedico = reader["QUALORTOPEDICO"].ToString();
-        //        c.AliBalanceada = reader["ALIBALANCEADA"].ToString();
-        //        c.QualAliBalanceada = reader["QUALALIBALANCEADA"].ToString();
-        //        c.Alergia = reader["ALERGIA"].ToString();
-        //        c.QualAlergia = reader["QUALALERGIA"].ToString();
-        //        c.Marcapasso = reader["MARCAPASSO"].ToString();
-        //        c.QualMarcapasso = reader["QUALMARCAPASSO"].ToString();
-        //        c.CuidadoDaiario = reader["CUIDADODIARIO"].ToString();
-        //        c.QualProduto = reader["QUALPRODUTO"].ToString();
-        //        c.Filho = reader["FILHO"].ToString();
-        //        c.QuantosFilos = Convert.ToInt32(reader["QUANTOSFILHOS"]);
-        //        c.Sentada = reader["SENTADA"].ToString();
-        //        c.Fumante = reader["FUMANTE"].ToString();
-        //        c.Hipotensao = reader["HIPOTENSAO"].ToString();
-        //        c.Hipotensao = reader["HIPERTENSAO"].ToString();
-        //        c.Diabetes = reader["DIABETES"].ToString();
-
-
-
-        //        listaCliente1.Add(c);//Adicionando o objeto para a lista
-        //    }
-        //    //Fechando a conexão
-        //    cf.Conexao.Close();
-
-        //    //Retornando a lista já carregada.
-        //    return listaCliente1;
-        //}
-
-        //public DataTable FindAll()
-        //{
-        //    string query = "USP_TB_PESSOA_CONTATOS_OBTER_TODOS";
-
-        //    cf = new ConnectionFactory();
-        //    cf.Comando = cf.Conexao.CreateCommand();
-        //    cf.Comando.CommandType = CommandType.StoredProcedure;
-        //    cf.Comando.CommandText = query;
-
-        //    DataTable dt = new DataTable();
-        //    SqlDataAdapter da = new SqlDataAdapter(cf.Comando);
-
-        //    cf.Conexao.Open();
-        //    da.Fill(dt);
-        //    cf.Conexao.Close();
-
-        //    return dt;
-        //}
     }
 }
