@@ -267,7 +267,7 @@ namespace Library.DAL
             cf.Comando.Parameters.AddWithValue("@ENDERECO", c.Endereco);
             cf.Comando.Parameters.AddWithValue("@BAIRRO", c.Bairro);
             cf.Comando.Parameters.AddWithValue("@NUMERO", c.Numero);
-            cf.Comando.Parameters.AddWithValue("@CIDADE	,", c.Cidade);
+            cf.Comando.Parameters.AddWithValue("@CIDADE", c.Cidade);
             cf.Comando.Parameters.AddWithValue("@UF", c.Uf);
             cf.Comando.Parameters.AddWithValue("@NASCIMENTO", c.Nascimento);
             cf.Comando.Parameters.AddWithValue("@IDADE", c.Idade);
@@ -293,7 +293,7 @@ namespace Library.DAL
             cf.Comando.Parameters.AddWithValue("@QUAISLIQUIDOS", c.QuaisLiquidos);
             cf.Comando.Parameters.AddWithValue("@VARIZES", c.Varizes);
             cf.Comando.Parameters.AddWithValue("@GRAUVARIZES", c.GrauVarizes);
-            cf.Comando.Parameters.AddWithValue("@ATIVFISICA	", c.AtivFisica);
+            cf.Comando.Parameters.AddWithValue("@ATIVFISICA", c.AtivFisica);
             cf.Comando.Parameters.AddWithValue("@QUALATIVFISICA", c.QualAtivFisica);
             cf.Comando.Parameters.AddWithValue("@ANTICONCEPCIONAL", c.Anticoncepcional);
             cf.Comando.Parameters.AddWithValue("@QUALANTICONCEPCIONAL", c.QualAnticoncepcional);

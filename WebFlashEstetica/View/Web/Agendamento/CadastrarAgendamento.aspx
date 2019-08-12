@@ -31,12 +31,18 @@
         function mensagemUPDCAn() {
             window.alert("Agendamento cancelado com sucesso!")
         }
+         function mensagemerroCEP() {
+            window.alert(ex.Message)
+        }
 
         function mensagemUPDFin() {
             window.alert("Agendamento finalizado com sucesso!")
             //window.location = 'ListarAgendamento.aspx';
         }
 
+        function ChamarExibirMensagemSucesso(msg) {
+            alert.ChamarExibirMensagemSucesso(msg);
+        }
 
     </script>
 </head>

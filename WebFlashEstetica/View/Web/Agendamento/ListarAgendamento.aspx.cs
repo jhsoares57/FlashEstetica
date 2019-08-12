@@ -12,8 +12,14 @@ namespace WebFlashEstetica.View.Web.Agendamento
     public partial class ListarAgendamento : System.Web.UI.Page
     {
         AgendamentoBLL bService = new AgendamentoBLL();
+        Usuario usuarioLogado = null;
         protected void Page_Load(object sender, EventArgs e)
         {
+            usuarioLogado = (Usuario)Session["Usuario"];
+            if (usuarioLogado ==null)
+            {
+                Response.Redirect ("../../../AcessoWeb.aspx");
+            }
             CerregarAgen();
         }
 

@@ -13,15 +13,6 @@ namespace WebFlashEstetica.View.Web.Cliente {
     public partial class CadastrarCliente {
         
         /// <summary>
-        /// Controle btnImprimirFicha.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnImprimirFicha;
-        
-        /// <summary>
         /// Controle Label9.
         /// </summary>
         /// <remarks>

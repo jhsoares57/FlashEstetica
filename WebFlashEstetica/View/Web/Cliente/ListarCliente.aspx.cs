@@ -13,8 +13,14 @@ namespace WebFlashEstetica.View.Web.Cliente
     {
 
         ClienteBLL cService = new ClienteBLL();
+        Usuario usuarioLogado = null;
         protected void Page_Load(object sender, EventArgs e)
         {
+            usuarioLogado = (Usuario)Session["Usuario"];
+            if (usuarioLogado == null)
+            {
+                Response.Redirect("../../../AcessoWeb.aspx");
+            }
             CerregarCliente();
         }
 

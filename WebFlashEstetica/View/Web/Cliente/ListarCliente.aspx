@@ -6,7 +6,7 @@
 
 
              function EditPessoa(id) {
-                 window.location = 'CadastroCliente.aspx?PessoaId=' + id;
+                 window.location = 'CadastrarCliente.aspx?PessoaId=' + id;
                  return false;
              }
 

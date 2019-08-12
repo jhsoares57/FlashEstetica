@@ -34,7 +34,7 @@ namespace WebTotem.View
                 if (usuario != null)
                 {
                     Session["Usuario"] = usuario;
-                    Response.Redirect("ListarAgendamento");
+                    Response.Redirect("View/web/Agendamento/ListarAgendamento.aspx");
                 }
                 else
                 {

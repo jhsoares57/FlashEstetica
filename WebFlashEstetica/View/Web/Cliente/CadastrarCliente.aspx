@@ -23,6 +23,10 @@
             window.alert("Registro Salvo com sucesso!")
         }
 
+        function mensagemUPDT() {
+            window.alert("Registro atualizado com sucesso!")
+        }
+
         function doVolta() { history.go(-1); }
 
         function CadastrarCliente1() {
@@ -134,70 +138,76 @@
         <div class="panel-heading"></div>
         <div class="panel-body"
 
-        <div class="row text-danger">
-            <h4 style="font-size: 2em;">Dados Basicos</h4>
+        <div class="row text-default">
+            <h4 style="font-size: 2em;">Cadastro de Cliente</h4>
             <hr />
 
-            <asp:LinkButton ID="btnImprimirFicha" CssClass="btn btn-success" runat="server" OnClick="btnImprimirFicha_Click">
+          <%--  <asp:LinkButton ID="btnImprimirFicha" CssClass="btn btn-success" runat="server" OnClick="btnImprimirFicha_Click">
             <i class="glyphicon glyphicon-user"></i>&nbsp;Imprimir Ficha
-            </asp:LinkButton>
-
-           <br />
+            </asp:LinkButton>--%>
 
        <br />
-    <asp:Label ID="Label9" runat="server" Text="Código:"></asp:Label>
-            <asp:TextBox ID="txtID" Enabled="false" runat="server" ></asp:TextBox>
-            &nbsp;
-    <asp:Label ID="Label8" runat="server" Text="Nome:"></asp:Label>
-            <asp:TextBox ID="txtNome" Enabled="true" runat="server" MaxLength="50"></asp:TextBox>
-            &nbsp;
-    <asp:Label ID="Label10" runat="server" Text="CPF:"></asp:Label>
-            <asp:TextBox ID="txtCPF" Enabled="true" runat="server" MaxLength="15"></asp:TextBox>
-           <br />
-                   <br />
+       <br />
+            <div style="font-size:14px; color:black; font-style:inherit">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                     <div class="row text-default"></div>
+            <h4 style="font-size: 2em;">Dados Básicos</h4>
+            <hr />
+       <br />
+                <asp:Label ID="Label9" runat="server" Text="Código:"></asp:Label>
+                        <asp:TextBox ID="txtID" Enabled="false" runat="server" Width="65px" ></asp:TextBox>
+                        &nbsp;
+                <asp:Label ID="Label8" runat="server" Text="Nome:"></asp:Label>
+                        <asp:TextBox ID="txtNome" Enabled="true" runat="server" MaxLength="50"></asp:TextBox>
+                        &nbsp;
+                <asp:Label ID="Label10" runat="server" Text="CPF:"></asp:Label>
+                        <asp:TextBox ID="txtCPF" Enabled="true" runat="server" MaxLength="15"></asp:TextBox>
+       <br />
+       <br />
                         <asp:Label ID="Label13" runat="server" Text="Celular:"></asp:Label>
-            <asp:TextBox ID="txtCelular" Enabled="true" runat="server" MaxLength="15" ></asp:TextBox>
-            &nbsp;
-                         <asp:Label ID="Label14" runat="server" Text="Email:"></asp:Label>
-            <asp:TextBox ID="txtEmail" Enabled="true" runat="server" Width="283px" MaxLength="30"></asp:TextBox>
-           <br />
-                   <br />
+                <asp:TextBox ID="txtCelular" Enabled="true" runat="server" MaxLength="15" ></asp:TextBox>
+                &nbsp;
+                             <asp:Label ID="Label14" runat="server" Text="Email:"></asp:Label>
+                <asp:TextBox ID="txtEmail" Enabled="true" runat="server" Width="220px" MaxLength="30"></asp:TextBox>
+       <br />
+       <br />
                             
                     <asp:Label ID="Label5" runat="server" Text="CEP:"></asp:Label>
-            <asp:TextBox ID="txtCep" runat="server" MaxLength="9"></asp:TextBox>
-            <asp:Button ID="btnBuscarCep" runat="server" Text="Cep" OnClick="btnBuscarCep_Click" />
-            &nbsp;
+                <asp:TextBox ID="txtCep" runat="server" MaxLength="9"></asp:TextBox>
+                <asp:Button ID="btnBuscarCep" runat="server" Text="Cep" OnClick="btnBuscarCep_Click" CssClass="btn-primary" />
+                &nbsp;
         
-        <asp:Label ID="Label" runat="server" Text="Endereço:"></asp:Label>
-            <asp:TextBox ID="txtRua" runat="server" MaxLength="15"></asp:TextBox>
-            &nbsp;
+                <asp:Label ID="Label" runat="server" Text="Endereço:"></asp:Label>
+                    <asp:TextBox ID="txtRua" runat="server" MaxLength="15"></asp:TextBox>
+                    &nbsp;
         
-        <asp:Label ID="Label1" runat="server" Text="Bairro:"></asp:Label>
-            <asp:TextBox ID="txtBairro" runat="server" MaxLength="15"></asp:TextBox>
+                <asp:Label ID="Label1" runat="server" Text="Bairro:"></asp:Label>
+                    <asp:TextBox ID="txtBairro" runat="server" MaxLength="15"></asp:TextBox>
 
            <br />
-                   <br />
-        <asp:Label ID="Label2" runat="server" Text="Numero:"></asp:Label>
-            <asp:TextBox ID="txtNumero" runat="server" MaxLength="5"></asp:TextBox>
+           <br />
+                <asp:Label ID="Label2" runat="server" Text="Numero:"></asp:Label>
+                    <asp:TextBox ID="txtNumero" runat="server" MaxLength="5"></asp:TextBox>
 
-            <asp:Label ID="Label6" runat="server" Text="Cidade:"></asp:Label>
-            <asp:TextBox ID="txtCiade" runat="server" MaxLength="20"></asp:TextBox>
+                    <asp:Label ID="Label6" runat="server" Text="Cidade:"></asp:Label>
+                    <asp:TextBox ID="txtCiade" runat="server" MaxLength="20"></asp:TextBox>
 
-            <asp:Label ID="Label7" runat="server" Text="Estado:"></asp:Label>
-            <asp:TextBox ID="txtEstado" runat="server" MaxLength="2"></asp:TextBox>
+                    <asp:Label ID="Label7" runat="server" Text="Estado:"></asp:Label>
+                    <asp:TextBox ID="txtEstado" runat="server" MaxLength="2"></asp:TextBox>
 
 
            <br />
-                    <br />
+          <br />
 
-        <asp:Label ID="Label3" runat="server" Text="Nascimento:"></asp:Label>
-            <asp:TextBox ID="txtNascimento" runat="server" MaxLength="10"></asp:TextBox>
+                <asp:Label ID="Label3" runat="server" Text="Nascimento:"></asp:Label>
+                    <asp:TextBox ID="txtNascimento" runat="server" MaxLength="10"></asp:TextBox>
 
-            <asp:Label ID="Label4" runat="server" Text="Idade:"></asp:Label>
-            <asp:TextBox ID="txtIdade" runat="server" MaxLength="2" Width="78"></asp:TextBox>
+                    <asp:Label ID="Label4" runat="server" Text="Idade:"></asp:Label>
+                    <asp:TextBox ID="txtIdade" runat="server" MaxLength="2" Width="78"></asp:TextBox>
 
-           <br />
-       <br />
+         <br />
+         <br />
 
 
                     <asp:Label ID="Label11" runat="server" Text="Sexo:"></asp:Label>
@@ -224,13 +234,18 @@
             <br />
             <asp:TextBox ID="txtQueixa" runat="server" Width="842px" MaxLength="100"></asp:TextBox>
 
+                    </div>
+                </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+
             <%--Inicio da camada de historico--%>
 
-            <div class="row text-danger">
+            <div class="row text-default"></div>
                 <h4 style="font-size: 2em;">Histórico</h4>
                 <hr />
-            </div>
-
+            
+ <div class="col-md-6">
             <%--primeiro bloco--%>
             <asp:Label ID="Label12" runat="server" Text="Tratamento estético anterior?"></asp:Label>
             &nbsp;
@@ -240,6 +255,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label17" runat="server" Text="Qual?" ></asp:Label>
@@ -258,6 +274,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label19" runat="server" Text="Qual?"></asp:Label>
@@ -277,6 +294,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label47" runat="server" Text="Quais?"></asp:Label>
@@ -295,6 +313,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label23" runat="server" Text="Qual?"></asp:Label>
@@ -315,6 +334,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label24" runat="server" Text="Quais?"></asp:Label>
@@ -333,6 +353,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label26" runat="server" Text="Qual?"></asp:Label>
@@ -352,6 +373,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label28" runat="server" Text="Quais?"></asp:Label>
@@ -370,6 +392,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label30" runat="server" Text="Qual?"></asp:Label>
@@ -389,6 +412,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label32" runat="server" Text="Obs:"></asp:Label>
@@ -407,6 +431,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label34" runat="server" Text="Quais?"></asp:Label>
@@ -426,6 +451,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label36" runat="server" Text="Quais?"></asp:Label>
@@ -444,6 +470,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+     <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label38" runat="server" Text="Qual?"></asp:Label>
@@ -453,7 +480,8 @@
 
            <br />
        <br />
-        
+                    </div>
+         <div class="col-md-6">
            <%--Setimo bloco--%>
             <asp:Label ID="Label39" runat="server" Text="Faz algum tratamento médico?"></asp:Label>
              &nbsp;
@@ -463,6 +491,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+      <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label40" runat="server" Text="Qual?"></asp:Label>
@@ -481,6 +510,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+      <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label42" runat="server" Text="Produtos em uso?"></asp:Label>
@@ -500,6 +530,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+        <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label44" runat="server" Text="Quanto?"></asp:Label>
@@ -518,6 +549,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+        <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label46" runat="server" Text="Quantos?"></asp:Label>
@@ -537,6 +569,7 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
+             <br />
              &nbsp;
             &nbsp;
             <asp:Label ID="Label49" runat="server" Text="Grau?"></asp:Label>
@@ -606,20 +639,19 @@
                 <asp:ListItem Value="1" Text="Sim"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Não"></asp:ListItem>
             </asp:DropDownList>
-
-
+                    </div>
+                    </div>
+                </div>
+            </div>
            <br />
            <br />           
-           <br />
-           <br />
-           <br />
-    <div class="row">
-        <div class="col-lg-12" style="left: 0px; top: 0px">
-            <asp:LinkButton ID="btnSalvar" CssClass="btn btn-primary form-control" runat="server" OnClick="btnSalvar_Click">
-            <i class="glyphicon glyphicon-hdd"></i>&nbsp;Salvar
-            </asp:LinkButton>
-        </div>
-    </div>
+            <div class="row">
+                <div class="col-lg-12" style="left: 0px; top: 0px">
+                    <asp:LinkButton ID="btnSalvar" CssClass="btn btn-primary form-control" runat="server" OnClick="btnSalvar_Click">
+                    <i class="glyphicon glyphicon-hdd"></i>&nbsp;Salvar
+                    </asp:LinkButton>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-lg-12">
@@ -631,9 +663,8 @@
                         </button>
                 </div>
             </div>
-            <%--  </td>
-            </tr>
-        </table>--%>
-            </div></div>
+            </div>
+            </div> 
+        </div>
     </body>
 </asp:Content>

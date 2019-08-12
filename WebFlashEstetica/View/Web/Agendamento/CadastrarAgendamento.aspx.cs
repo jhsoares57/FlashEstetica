@@ -14,9 +14,14 @@ namespace WebFlashEstetica.View.Web.Agendamento
 
         ClienteBLL cService = new ClienteBLL();
         AgendamentoBLL aService = new AgendamentoBLL();
+        Usuario usuarioLogado = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            usuarioLogado = (Usuario)Session["Usuario"];
+            if (usuarioLogado == null)
+            {
+                Response.Redirect("../../../AcessoWeb.aspx");
+            }
             carregarCliente();
             btnSalvarBanco.Visible = false;
             if (!Page.IsPostBack)
@@ -228,6 +233,7 @@ namespace WebFlashEstetica.View.Web.Agendamento
         {
             btnReagendar.Visible = false;
             btnCancelar.Visible = false;
+            btnFinalizar.Visible = false;
         }
 
         protected void btnFinalizar_Click(object sender, EventArgs e)
