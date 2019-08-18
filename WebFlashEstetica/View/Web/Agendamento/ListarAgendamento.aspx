@@ -61,7 +61,7 @@
             <button type="button" name="btnNovo" id="btnNovo" class="btn btn-primary form-control"
                 value="Novo" onclick="CadastrarAgendamento()">
 
-                <i class="glyphicon glyphicon-pencil"></i>&nbsp;Lançamento  
+                <i class="glyphicon glyphicon-pencil"></i>&nbsp;Agendamento  
                            
             </button>
 
