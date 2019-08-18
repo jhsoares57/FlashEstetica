@@ -3,10 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/jquery-3.3.1.min.js"></script>
-    <script src="Scripts/jquery.maskedinput.min.js"></script>
+    <link href="../../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../../Scripts/bootstrap.min.js"></script>
+    <script src="../../../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../../../Scripts/jquery.maskedinput.min.js"></script>
 
     <script type="text/javascript">
         function ChamarFecharPopUp() {
@@ -36,6 +36,9 @@
             return false;
         }
 
+        function Alert(ChaveMensagem) {
+            window.alert(ChaveMensagem);
+        }
 
 
         function Secao(id, nome) {
@@ -133,13 +136,12 @@
             <tr>
                 <td>--%><br/>
         <%--inicio da camada de dados basicos--%>
-
         <div class="panel panel-primary">
         <div class="panel-heading"></div>
-        <div class="panel-body"
+        <div class="panel-body">
 
         <div class="row text-default">
-            <h4 style="font-size: 2em;">Cadastro de Cliente</h4>
+            <h4 style="font-size: 2em; text-align:center">Cadastro de Cliente</h4>
             <hr />
 
           <%--  <asp:LinkButton ID="btnImprimirFicha" CssClass="btn btn-success" runat="server" OnClick="btnImprimirFicha_Click">
@@ -245,7 +247,7 @@
                 <h4 style="font-size: 2em;">Histórico</h4>
                 <hr />
             
- <div class="col-md-6">
+ <div class="auto-style1">
             <%--primeiro bloco--%>
             <asp:Label ID="Label12" runat="server" Text="Tratamento estético anterior?"></asp:Label>
             &nbsp;

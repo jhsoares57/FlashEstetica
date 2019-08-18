@@ -99,6 +99,7 @@ namespace WebFlashEstetica.View.Web.Cliente
         {
             try
             {
+
                     cepConsulta address = correiosCEP.GetAddress(txtCep.Text);
                     txtRua.Text = (address.Rua);
                     txtBairro.Text = (address.Bairro);
@@ -108,10 +109,8 @@ namespace WebFlashEstetica.View.Web.Cliente
             }
             catch (Exception ex)
             {
-                //ClientScript.RegisterStartupScript(this.GetType(), "Mensagem", "<script>mensagem();</script>");
-                string scriptMensagem = string.Format("<script>mensagemerroCEP('{0}');</script>", ex.Message);
+                string scriptMensagem = string.Format("<script>Alert('{0}');</script>", ex.Message);
                 ClientScript.RegisterStartupScript(this.GetType(), "ChaveMensagem", scriptMensagem);
-                // throw;
             }
 
         }
