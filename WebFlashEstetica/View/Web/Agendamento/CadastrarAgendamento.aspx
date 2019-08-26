@@ -80,9 +80,9 @@
                             </div>
                             <br />
                             <br />
-                            <asp:GridView ID="gvAgendamento" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" Width="597px">
+                            <asp:GridView ID="gvAgendamento" runat="server" DataKeyNames="IdCliente1" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" Width="597px">
                                 <Columns>
-                                    <asp:BoundField HeaderText="ID Cliente" DataField="Id" />
+                                    <asp:BoundField HeaderText="ID Cliente" DataField="IdCliente1" />
                                     <asp:BoundField HeaderText="Nome do Cliente" DataField="NomeCliente" />
                                     <asp:BoundField HeaderText="Data" DataField="Data" DataFormatString="{0:dd/MM/yyyy}" />
                                     <asp:BoundField HeaderText="Hora" DataField="Hora" DataFormatString="{0:hh:mm}" />
@@ -111,6 +111,9 @@
                             &nbsp
                              &nbsp
                             <asp:Button ID="btnFinalizar" runat="server" Text="Finalizar" CssClass="btn btn-success" Width="92px" OnClick="btnFinalizar_Click" />
+                             &nbsp
+                             &nbsp
+                            <asp:Button ID="btnFinalizarMedida" runat="server" Text="Finalizar com Mendidas" CssClass="btn btn-success" Width="175px" OnClick="btnFinalizarMedida_Click" />
                         </div>
                     </div>
                 </div>

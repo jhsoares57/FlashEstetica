@@ -11,7 +11,19 @@ namespace WebFlashEstetica.View.Web.Agendamento
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            RecuperarDadosCessao();
+        }
 
+        protected void btnVoltar_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void RecuperarDadosCessao()
+        {
+            txtAgemdamento.Text = Session["IdAgendamento"].ToString();
+            txtCodCliente.Text = Session["IdCliente"].ToString();
+            txtCliente.Text = Session["Cliente"].ToString();
         }
     }
 }

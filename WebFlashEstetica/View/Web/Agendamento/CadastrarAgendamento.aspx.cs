@@ -42,7 +42,7 @@ namespace WebFlashEstetica.View.Web.Agendamento
             {
                 int ClienteID = Convert.ToInt32(Request.QueryString["AgendamentoId"].ToString());
                 Agendamento_Estetica a = aService.FindByIdAgendamento(ClienteID);
-                txtId.Text = a.Id.ToString();
+                txtId.Text = a.IdAgendmento.ToString();
                 ddlCliente.Text = a.NomeCliente.ToString();
                 txtData.Text = a.Data.ToString();
                 txtHora.Text = a.Hora.ToString();
@@ -58,12 +58,14 @@ namespace WebFlashEstetica.View.Web.Agendamento
             btnReagendar.Visible = false;
             btnCancelar.Visible = false;
             btnFinalizar.Visible = false;
+            btnFinalizarMedida.Visible = false;
         }
         private void DesbloquearButoes()
         {
             btnReagendar.Visible = true;
             btnCancelar.Visible = true;
             btnFinalizar.Visible = true;
+            btnFinalizarMedida.Visible = true;
         }
 
         private void BloquearCampos()
@@ -102,7 +104,7 @@ namespace WebFlashEstetica.View.Web.Agendamento
                 {
 
                     Agendamento_Estetica aLinha = new Agendamento_Estetica();
-                    aLinha.Id = Convert.ToInt32(linha.Cells[0].Text);
+                    aLinha.IdCliente1 = Convert.ToInt32(linha.Cells[0].Text);
                     aLinha.NomeCliente = linha.Cells[1].Text;
                     aLinha.Data = Convert.ToDateTime(linha.Cells[2].Text);
                     aLinha.Hora = Convert.ToDateTime(linha.Cells[3].Text);
@@ -115,7 +117,7 @@ namespace WebFlashEstetica.View.Web.Agendamento
 
 
                 Agendamento_Estetica c = new Agendamento_Estetica();
-                c.NomeCliente = ddlCliente.SelectedValue;
+                c.IdCliente1 = Convert.ToInt32(ddlCliente.SelectedValue);
                 c.NomeCliente = ddlCliente.SelectedItem.Text;
                 c.Data = Convert.ToDateTime(txtData.Text);
                 c.Hora = Convert.ToDateTime(txtHora.Text);
@@ -139,7 +141,7 @@ namespace WebFlashEstetica.View.Web.Agendamento
             List<Agendamento_Estetica> listaTipoDevolucao = aService.FindClienteAgen();
             ddlCliente.DataSource = listaTipoDevolucao;
             ddlCliente.DataTextField = "NomeCliente";
-            ddlCliente.DataValueField = "Id";
+            ddlCliente.DataValueField = "IdCliente1";
             ddlCliente.DataBind();
         }
 
@@ -173,7 +175,7 @@ namespace WebFlashEstetica.View.Web.Agendamento
             Agendamento_Estetica p = new Agendamento_Estetica();
             p.Data = Convert.ToDateTime(txtData.Text);
             p.Hora = Convert.ToDateTime(txtHora.Text);
-            p.Id = Convert.ToInt32(txtId.Text);
+            p.IdAgendmento = Convert.ToInt32(txtId.Text);
 
             aService.UpdateReag(p);
 
@@ -184,7 +186,7 @@ namespace WebFlashEstetica.View.Web.Agendamento
             Agendamento_Estetica p = new Agendamento_Estetica();
             p.Data = Convert.ToDateTime(txtData.Text);
             p.Hora = Convert.ToDateTime(txtHora.Text);
-            p.Id = Convert.ToInt32(txtId.Text);
+            p.IdAgendmento = Convert.ToInt32(txtId.Text);
 
             aService.UpdateCancelamento(p);
 
@@ -246,10 +248,28 @@ namespace WebFlashEstetica.View.Web.Agendamento
         private void AtualizarFinalizado()
         {
             Agendamento_Estetica p = new Agendamento_Estetica();
-            p.Id = Convert.ToInt32(txtId.Text);
+            p.IdAgendmento = Convert.ToInt32(txtId.Text);
 
             aService.UpdateFina(p);
 
+        }
+
+        protected void btnFinalizarMedida_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Session["IdAgendamento"] = this.txtId.Text;
+                Session["IdCliente"] = this.ddlCliente.SelectedValue;
+                Session["Cliente"] = this.ddlCliente.SelectedItem.Text;
+
+                Response.Redirect("FinalizarAgendamento.aspx");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
     }
 }

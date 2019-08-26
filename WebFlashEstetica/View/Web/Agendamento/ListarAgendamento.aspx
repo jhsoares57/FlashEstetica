@@ -72,7 +72,7 @@
                             <div class="col-md-8">
                                 <asp:GridView ID="gvListarAgendamento" runat="server"  HeaderStyle-BackColor="#3AC0F2" AutoGenerateColumns="false" OnRowDataBound="gvListarAgendamento_RowDataBound" Width="800px" OnSelectedIndexChanged="gvListarAgendamento_SelectedIndexChanged" HorizontalAlign="Center" ShowFooter="True">
                                     <Columns>
-                                        <asp:BoundField HeaderText="Código" DataField="Id" />
+                                        <asp:BoundField HeaderText="Código" DataField="IdAgendmento" />
                                         <asp:BoundField HeaderText="Nome do Cliente:" DataField="NomeCliente" />
                                         <asp:BoundField HeaderText="Data do agendamento" DataField="Data" DataFormatString="{0: dd/MM/yyyy}"/>
                                         <asp:BoundField HeaderText="Hora do agendamento" DataField="Hora" DataFormatString="{0:t}"/>
@@ -92,7 +92,7 @@
                                             <ItemTemplate>
                                                 <asp:Panel ID="pnlAgendar" runat="server">
                                                  <button class="btn btn-success btn-sm" title="Editar Agendamento" style="height: 30px"
-                                                        type="button" onclick='EditarAgendamento(<%# Eval("Id") %>); return false;'>
+                                                        type="button" onclick='EditarAgendamento(<%# Eval("IdAgendmento") %>); return false;'>
                                                         <i class="glyphicon glyphicon-copy"></i>
                                                     </button>
                                                     </asp:Panel>

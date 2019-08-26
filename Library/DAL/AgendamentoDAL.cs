@@ -34,7 +34,7 @@ namespace Library.DAL
             while (dr.Read())
             {
                 Agendamento_Estetica c = new Agendamento_Estetica();
-                c.Id = Convert.ToInt32(dr["ID_CLINTE"]);
+                c.IdCliente1 = Convert.ToInt32(dr["ID_CLINTE"]);
                 c.NomeCliente = Convert.ToString(dr["NM_CLIENTE"]);
                 lista.Add(c);
             }
@@ -64,7 +64,7 @@ namespace Library.DAL
 
             cf.Conexao.Open();
 
-            c.Id = Convert.ToInt32(cf.Comando.ExecuteScalar());
+            c.IdAgendmento = Convert.ToInt32(cf.Comando.ExecuteScalar());
             cf.Conexao.Close();
 
         }
@@ -91,7 +91,7 @@ namespace Library.DAL
             {
                 Agendamento_Estetica p = new Agendamento_Estetica();//Instanciando o objeto da iteração
                 //Preenchimento das propriedades a partir do que retornou no banco.
-                p.Id = Convert.ToInt32(reader["ID_AGEN"]);
+                p.IdAgendmento = Convert.ToInt32(reader["ID_AGEN"]);
                 p.NomeCliente = reader["CLIENTE_AGEN"].ToString();
                 p.Data = Convert.ToDateTime(reader["DATA_AGEN"]);
                 p.Hora = Convert.ToDateTime(reader["HORA_AGEN"]);
@@ -126,7 +126,7 @@ namespace Library.DAL
             //e carregar o objeto que será devolvido pelo Método
             if (reader.Read())
             {
-                c.Id = Convert.ToInt32(reader["ID_AGEN"]);
+                c.IdAgendmento = Convert.ToInt32(reader["ID_AGEN"]);
                 c.NomeCliente = reader["CLIENTE_AGEN"].ToString();
                 c.Data = Convert.ToDateTime(reader["DATA_AGEN"]);
                 c.Hora = Convert.ToDateTime(reader["HORA_AGEN"]);
@@ -148,7 +148,7 @@ namespace Library.DAL
             cf.Comando = cf.Conexao.CreateCommand();
             cf.Comando.Parameters.AddWithValue("@DATA", a.Data);
             cf.Comando.Parameters.AddWithValue("@HORA", a.Hora);
-            cf.Comando.Parameters.AddWithValue("@ID_AGEN", a.Id);//Necessário ID para saber que registro será atualizado
+            cf.Comando.Parameters.AddWithValue("@ID_AGEN", a.IdAgendmento);//Necessário ID para saber que registro será atualizado
 
             cf.Comando.CommandType = CommandType.StoredProcedure;
             cf.Comando.CommandText = query;
@@ -173,7 +173,7 @@ namespace Library.DAL
             cf.Comando = cf.Conexao.CreateCommand();
             cf.Comando.Parameters.AddWithValue("@DATA", a.Data);
             cf.Comando.Parameters.AddWithValue("@HORA", a.Hora);
-            cf.Comando.Parameters.AddWithValue("@ID_AGEN", a.Id);//Necessário ID para saber que registro será atualizado
+            cf.Comando.Parameters.AddWithValue("@ID_AGEN", a.IdAgendmento);//Necessário ID para saber que registro será atualizado
 
             cf.Comando.CommandType = CommandType.StoredProcedure;
             cf.Comando.CommandText = query;
@@ -196,7 +196,7 @@ namespace Library.DAL
 
             //PARAMETROS 
             cf.Comando = cf.Conexao.CreateCommand();
-            cf.Comando.Parameters.AddWithValue("@ID_AGEN", a.Id);//Necessário ID para saber que registro será atualizado
+            cf.Comando.Parameters.AddWithValue("@ID_AGEN", a.IdAgendmento);//Necessário ID para saber que registro será atualizado
 
             cf.Comando.CommandType = CommandType.StoredProcedure;
             cf.Comando.CommandText = query;

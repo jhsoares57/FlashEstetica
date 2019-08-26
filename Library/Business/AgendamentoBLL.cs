@@ -23,7 +23,7 @@ namespace Library.Business
             bool salvou = false;
             new AgendamentoDAL().Insert_Agendamento(c);
 
-            if (c.Id > 0)
+            if (c.IdAgendmento > 0)
             {
                 salvou = true;
 
