@@ -102,5 +102,17 @@ namespace Library.Business
             }
             return atualizou;
         }
+        public bool InsertMedidas(Agendamento_Medidas_Estetica c)
+        {
+            bool salvou = false;
+            new AgendamentoDAL().InsertMedidas(c);
+
+            //Se o ID for maior que zero, indica que o dado foi salvo
+            if (c.IdMedida > 0)
+            {
+                salvou = true;
+            }
+            return salvou;
+        }
     }
 }

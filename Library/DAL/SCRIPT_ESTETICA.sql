@@ -333,6 +333,10 @@ WHERE USUA_ID = @ID
 go
 INSERT INTO TB_USUARIOS VALUES ('adm', '2c2c2c2c2c2c2c2c2c2c2c2c2c2c2c2c', 1, getdate())
 
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+
 CREATE TABLE TB_MEDIDA
 (IDMED INT PRIMARY KEY IDENTITY,
 IDAGEMDAMENTO INT CONSTRAINT FK_TB_AGEMDAMENTO_ REFERENCES dbo.TB_AGENDAMENTO(ID_AGEN),
@@ -344,6 +348,8 @@ COXAESQ VARCHAR(4),
 PANTESQ VARCHAR(4),
 PANTDIR VARCHAR(4))
 
+/*-------------------------------------------------------------------------------------------------------*/
+
 CREATE PROCEDURE FL_MEDIDA_INS
 @CINTURA VARCHAR(4),
 @CULOTE VARCHAR(4),
@@ -351,8 +357,30 @@ CREATE PROCEDURE FL_MEDIDA_INS
 @COXADIR VARCHAR(4),
 @COXAESQ VARCHAR(4),
 @PANTESQ VARCHAR(4),
-@PANTDIR VARCHAR(4)
+@PANTDIR VARCHAR(4),
+@ID_OUT int output
 AS
 INSERT INTO dbo.TB_MEDIDA(CINTURA,CULOTE,QUADRIL,COXADIR,COXAESQ,PANTESQ,PANTDIR)
 VALUES
 (@CINTURA,@CULOTE ,@QUADRIL,@COXADIR,@COXAESQ,@PANTESQ,@PANTDIR)
+SET @ID_OUT = (SELECT SCOPE_IDENTITY())
+RETURN @ID_OUT
+
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+CREATE TABLE TB_PLANO
+(ID_PLANO INT IDENTITY PRIMARY KEY,
+DSC_PLANO VARCHAR(30))
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+CREATE PROCEDURE FL_PLANO_INS
+@DSC_PLANO VARCHAR(30),
+@ID_OUT int output
+AS
+INSERT INTO Dbo.TB_PLANO
+(DSC_PLANO)
+VALUES(@DSC_PLANO)
+SET @ID_OUT = (SELECT SCOPE_IDENTITY())
+RETURN @ID_OUT

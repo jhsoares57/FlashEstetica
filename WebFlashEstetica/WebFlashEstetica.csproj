@@ -158,6 +158,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="View\Web\Agendamento\FinalizarAgendamento.aspx" />
+    <Content Include="View\Web\Plano\CadastrarPlano.aspx" />
+    <Content Include="View\Web\Plano\ListarPlano.aspx" />
     <Content Include="WebAcessoLogin.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -276,6 +278,20 @@
     </Compile>
     <Compile Include="View\Web\Cliente\ListarCliente.aspx.designer.cs">
       <DependentUpon>ListarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Web\Plano\CadastrarPlano.aspx.cs">
+      <DependentUpon>CadastrarPlano.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Web\Plano\CadastrarPlano.aspx.designer.cs">
+      <DependentUpon>CadastrarPlano.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Web\Plano\ListarPlano.aspx.cs">
+      <DependentUpon>ListarPlano.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Web\Plano\ListarPlano.aspx.designer.cs">
+      <DependentUpon>ListarPlano.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebAcessoLogin.aspx.cs">
       <DependentUpon>WebAcessoLogin.aspx</DependentUpon>

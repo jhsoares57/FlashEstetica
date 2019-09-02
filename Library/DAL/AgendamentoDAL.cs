@@ -208,5 +208,70 @@ namespace Library.DAL
             //Este método retorna um número inteiro, conforme o que a assinatura pede.
             return linhasAfetadas;
         }
+
+
+        public int UpdateFinalizadoComMedida(Agendamento_Estetica a)
+        {
+            cf = new ConnectionFactory();
+            string query = "USP_TB_AGENDAMENTO_UPD_FIN";
+
+            //Variável guardará a quantidade de linhas afetadas
+            int linhasAfetadas = 0;
+
+            //PARAMETROS 
+            cf.Comando = cf.Conexao.CreateCommand();
+            cf.Comando.Parameters.AddWithValue("@ID_AGEN", a.IdAgendmento);//Necessário ID para saber que registro será atualizado
+
+            cf.Comando.CommandType = CommandType.StoredProcedure;
+            cf.Comando.CommandText = query;
+            cf.Conexao.Open();
+            //ExecuteNonQuery: Retorna o número de linhas afetadas no Banco de dados para a variável.
+            linhasAfetadas = cf.Comando.ExecuteNonQuery();
+            cf.Conexao.Close();
+
+            //Este método retorna um número inteiro, conforme o que a assinatura pede.
+            return linhasAfetadas;
+        }
+        public void InsertMedidas(Agendamento_Medidas_Estetica c)
+        {
+            string query = "FL_MEDIDA_INS";
+
+            //Connection Factory: Classe que gerencia o local da conexão, tendo o método responsável por obter a conexão
+            cf = new ConnectionFactory();
+
+            //CreateCommand: Inicializa o objeto SqlCommand associando o Comando com a conexão do Banco onde será executado
+            cf.Comando = cf.Conexao.CreateCommand();
+
+            //Abaixo os parametros que no momento da execução serão substituídos pelos valor das propriedades
+            //cf.Comando.Parameters.AddWithValue("@ID_CLINTE", c.Id);
+            cf.Comando.Parameters.AddWithValue("@IDAGEMDAMENTO", c.IdAgendamento);
+            cf.Comando.Parameters.AddWithValue("@[CINTURA]", c.Cintura);
+            cf.Comando.Parameters.AddWithValue("@CULOTE", c.Culote);
+            cf.Comando.Parameters.AddWithValue("@QUADRIL", c.Quadril);
+            cf.Comando.Parameters.AddWithValue("@COXADIR", c.CoxaDir);
+            cf.Comando.Parameters.AddWithValue("@COXAESQ", c.CoxaEsq);
+            cf.Comando.Parameters.AddWithValue("@PANTESQ", c.PantEsq);
+            cf.Comando.Parameters.AddWithValue("@PANTDIR", c.PantDir);
+            
+
+            cf.Comando.Parameters.AddWithValue("@ID_OUT", 0).Direction = ParameterDirection.Output;
+
+            //CommandType indica que o Comando será via procedure no banco de dados
+            cf.Comando.CommandType = CommandType.StoredProcedure;
+
+            //CommandText: Propriedade do objeto command que receberá o texto do Comando a ser executado.
+            cf.Comando.CommandText = query.ToString();
+
+            //Abre a conexão 
+            cf.Conexao.Open();
+            c.IdMedida= 0;//Define o ID inicialmente como 0.
+
+            cf.Comando.ExecuteNonQuery();//Execução do Comando no Banco de dados        
+            object o = cf.Comando.Parameters["@ID_OUT"].Value;//Recuperando o ID salvo (que deverá ser > 0).
+            cf.Conexao.Close();
+
+            if (o != null)
+                c.IdMedida = Convert.ToInt32(o);
+        }
     }
 }

@@ -44,15 +44,19 @@
   <ItemGroup>
     <Compile Include="Business\AgendamentoBLL.cs" />
     <Compile Include="Business\ClienteBLL.cs" />
+    <Compile Include="Business\PlanoBLL.cs" />
     <Compile Include="Business\UsuarioBLL.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DAL\AgendamentoDAL.cs" />
     <Compile Include="DAL\ClienteDAL.cs" />
     <Compile Include="DAL\ConnectionFactory.cs" />
     <Compile Include="DAL\Enuns\PerfilEnum.cs" />
+    <Compile Include="DAL\PlanoDAL.cs" />
     <Compile Include="DAL\UsuarioDAL.cs" />
     <Compile Include="Model\Agendamento_Estetica.cs" />
+    <Compile Include="Model\Agendamento_Medidas_Estetica.cs" />
     <Compile Include="Model\Cliente_Estetica.cs" />
+    <Compile Include="Model\Plano_Estetica.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Criptografia.cs" />
