@@ -48,7 +48,7 @@
       <HintPath>..\packages\AjaxControlToolkit.19.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Correios.CEP">
-      <HintPath>..\..\..\..\Downloads\Correios.CEP.dll</HintPath>
+      <HintPath>D:\Projetos\Correios.CEP.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">

@@ -22,11 +22,12 @@ namespace WebFlashEstetica.View.Web.Agendamento
             {
                 Response.Redirect("../../../AcessoWeb.aspx");
             }
-            carregarCliente();
+            
             btnSalvarBanco.Visible = false;
             if (!Page.IsPostBack)
             {
                 EditarAgendamento();
+                carregarCliente();
             }
             if(string.IsNullOrEmpty(txtId.Text))
             {
@@ -94,30 +95,43 @@ namespace WebFlashEstetica.View.Web.Agendamento
             btnAdicionar.Visible = true;
             Button1.Visible = true;
         }
+
+        private void adicionar()
+        {
+            Agendamento_Estetica c = new Agendamento_Estetica();
+            c.IdCliente1 = Convert.ToInt32(ddlCliente.SelectedValue);
+            c.NomeCliente = ddlCliente.Text;
+            c.Data = Convert.ToDateTime(txtData.Text);
+            c.Hora = Convert.ToDateTime(txtHora.Text);
+
+            aService.Insert(c);
+        }
         protected void btnAdicionar_Click(object sender, EventArgs e)
         {
             try
             {
+                string idcli = ddlCliente.SelectedValue;
                 List<Agendamento_Estetica> listCliente = new List<Agendamento_Estetica>();
 
-                foreach (GridViewRow linha in gvAgendamento.Rows)
-                {
+                //foreach (GridViewRow linha in gvAgendamento.Rows)
+                //{
 
-                    Agendamento_Estetica aLinha = new Agendamento_Estetica();
-                    aLinha.IdCliente1 = Convert.ToInt32(linha.Cells[0].Text);
-                    aLinha.NomeCliente = linha.Cells[1].Text;
-                    aLinha.Data = Convert.ToDateTime(linha.Cells[2].Text);
-                    aLinha.Hora = Convert.ToDateTime(linha.Cells[3].Text);
+                //    Agendamento_Estetica aLinha = new Agendamento_Estetica();
+                //    aLinha.IdCliente1 = Convert.ToInt32(linha.Cells[0].Text);
+                //    aLinha.NomeCliente = linha.Cells[1].Text;
+                //    aLinha.Data = Convert.ToDateTime(linha.Cells[2].Text);
+                //    aLinha.Hora = Convert.ToDateTime(linha.Cells[3].Text);
 
 
-                    listCliente.Add(aLinha);
+                //    listCliente.Add(aLinha);
 
-                }
+                //}
 
 
 
                 Agendamento_Estetica c = new Agendamento_Estetica();
-                c.IdCliente1 = Convert.ToInt32(ddlCliente.SelectedValue);
+
+                c.IdCliente1 = Convert.ToInt32(idcli);
                 c.NomeCliente = ddlCliente.SelectedItem.Text;
                 c.Data = Convert.ToDateTime(txtData.Text);
                 c.Hora = Convert.ToDateTime(txtHora.Text);
@@ -134,14 +148,24 @@ namespace WebFlashEstetica.View.Web.Agendamento
 
                 Response.Write(ex.Message);
             }
+
+            //try
+            //{
+            //    adicionar();    
+            //}
+            //catch (Exception)
+            //{
+
+            //    throw;
+            //}
         }
 
         public void carregarCliente()
         {
             List<Agendamento_Estetica> listaTipoDevolucao = aService.FindClienteAgen();
             ddlCliente.DataSource = listaTipoDevolucao;
-            ddlCliente.DataTextField = "NomeCliente";
             ddlCliente.DataValueField = "IdCliente1";
+            ddlCliente.DataTextField = "NomeCliente";
             ddlCliente.DataBind();
         }
 
@@ -271,5 +295,7 @@ namespace WebFlashEstetica.View.Web.Agendamento
             }
            
         }
+
+
     }
 }

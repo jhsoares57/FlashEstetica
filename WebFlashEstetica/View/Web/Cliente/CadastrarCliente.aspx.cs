@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Reporting.WebForms;
-using Correios;
+//using Correios;
 using Correios.CEP;
 
 namespace WebFlashEstetica.View.Web.Cliente
@@ -100,12 +100,12 @@ namespace WebFlashEstetica.View.Web.Cliente
             try
             {
 
-                    cepConsulta address = correiosCEP.GetAddress(txtCep.Text);
-                    txtRua.Text = (address.Rua);
-                    txtBairro.Text = (address.Bairro);
-                    txtCiade.Text = (address.Cidade);
-                    txtEstado.Text = (address.UF);
-                    txtCep.Text = (address.Cep);
+                cepConsulta address = correiosCEP.GetAddress(txtCep.Text);
+                txtRua.Text = (address.Rua);
+                txtBairro.Text = (address.Bairro);
+                txtCiade.Text = (address.Cidade);
+                txtEstado.Text = (address.UF);
+                txtCep.Text = (address.Cep);
             }
             catch (Exception ex)
             {

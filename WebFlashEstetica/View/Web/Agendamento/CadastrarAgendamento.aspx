@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <asp:Label ID="Label1" runat="server" Text="Cliente:"></asp:Label>
-                                    <asp:DropDownList ID="ddlCliente" runat="server" Width="267px"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlCliente" runat="server" Width="267px" AutoPostBack="false"></asp:DropDownList>
                                 </div>
                                 <div class="col-md-6">
                                     <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>
